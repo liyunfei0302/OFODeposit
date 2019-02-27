@@ -12,19 +12,19 @@ public class OFODeposit {
         queues.add(new Queue(LocalDate.parse("2019-02-20"), 9237945));
         queues.add(new Queue(LocalDate.parse("2019-02-25"), 9201359));
         queues.add(new Queue(LocalDate.parse("2019-02-26"), 9193892));
-
-        // 天数间隔
-        Long days = queues.get(queues.size() - 1).getDate().toEpochDay() - 
-                    queues.get(0).getDate().toEpochDay();
-        // 名次间隔
-        Integer rankings = queues.get(0).getRanking() - queues.get(queues.size() - 1).getRanking();
-
-        // 结果
-        System.out.println(
-            "It's your turn in ["
-            + queues.get(queues.size() - 1).getRanking() / (rankings / days)
-            + "] days!"
-            );
+        queues.add(new Queue(LocalDate.parse("2019-02-27"), 9186375));
+        
+        // 索引
+        Integer index = null;
+        for (int i = 2; i <= queues.size(); i++) {
+            index = i - 1;
+            // 天数间隔
+            Long days = queues.get(index).getDate().toEpochDay() - queues.get(0).getDate().toEpochDay();
+            // 名次间隔
+            Integer rankings = queues.get(0).getRanking() - queues.get(index).getRanking();
+            // 结果
+            System.out.println("It's your turn in [" + queues.get(index).getRanking() / (rankings / days) + "] days, On " + queues.get(index).getDate() + ".");
+        }
     }
 }
 
