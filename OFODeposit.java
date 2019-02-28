@@ -7,12 +7,16 @@ public class OFODeposit {
     public static void main(String[] args) {
         // 排队数据列表
         List<Queue> queues = new ArrayList();
-        queues.add(new Queue(LocalDate.parse("2019-02-15"), 9286828));
-        queues.add(new Queue(LocalDate.parse("2019-02-18"), 9253814));
-        queues.add(new Queue(LocalDate.parse("2019-02-20"), 9237945));
-        queues.add(new Queue(LocalDate.parse("2019-02-25"), 9201359));
-        queues.add(new Queue(LocalDate.parse("2019-02-26"), 9193892));
-        queues.add(new Queue(LocalDate.parse("2019-02-27"), 9186375));
+        // 一天内随机时间数据，不准确
+        // queues.add(new Queue(LocalDate.parse("2019-02-15"), 9286828));
+        // queues.add(new Queue(LocalDate.parse("2019-02-18"), 9253814));
+        // queues.add(new Queue(LocalDate.parse("2019-02-20"), 9237945));
+        // queues.add(new Queue(LocalDate.parse("2019-02-25"), 9201359));
+        // queues.add(new Queue(LocalDate.parse("2019-02-26"), 9193892));
+        // queues.add(new Queue(LocalDate.parse("2019-02-27"), 9186375));
+        // queues.add(new Queue(LocalDate.parse("2019-02-28"), 9176475));
+        // 每天下午6点数据
+        queues.add(new Queue(LocalDate.parse("2019-02-28"), 9176475));
         
         // 索引
         Integer index = null;
@@ -24,6 +28,11 @@ public class OFODeposit {
             Integer rankings = queues.get(0).getRanking() - queues.get(index).getRanking();
             // 结果
             System.out.println("It's your turn in [" + queues.get(index).getRanking() / (rankings / days) + "] days, On " + queues.get(index).getDate() + ".");
+        }
+        if (queues.size() < 2) {
+            System.out.println("queues.size() has to be greater than 2.");
+        } else {
+            System.out.println("done.");
         }
     }
 }
